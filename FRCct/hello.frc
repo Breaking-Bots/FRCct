@@ -1,0 +1,5 @@
+#ENTRY_TYPE(BASIC)
+
+void main(){
+	cout("Hello, World");
+};
