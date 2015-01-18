@@ -121,8 +121,6 @@ void Tokenizer::NextToken(Token& out_token){
 	}
 
 	std::cerr << "Could not tokenize \'" << str << "\'" << std::endl;
-	system("pause");
-	exit(1);
 }
 
 std::string VectorToString(std::vector<std::string> vector){

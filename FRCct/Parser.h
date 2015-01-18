@@ -2,6 +2,7 @@
 #include<vector>
 #include<string>
 #include<iostream>
+#include<regex>
 #include "Lexer.h"
 
 class Block{
@@ -16,7 +17,7 @@ public:
 	inline Block* GetParent(){ return parent; }
 	inline void AddBlock(Block* child){ children.push_back(child); }
 	virtual void Run() = 0;
-	virtual ~Block() = 0;
+	virtual ~Block();
 };
 
 
@@ -29,8 +30,8 @@ private:
 	void operator=(const Parser& rhs){}
 public:
 	
-	virtual bool ShouldParse(std::string line) = 0;
-	virtual Block* Parse(const Block& parent, Tokenizer tokenizer) = 0;
+	virtual bool ShouldParse(const std::string& line) = 0;
+	virtual Block* Parse(const Block& parent, Tokenizer& tokenizer) = 0;
 
 	virtual ~Parser();
 };
