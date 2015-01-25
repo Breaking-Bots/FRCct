@@ -1,5 +1,6 @@
 #pragma once
 #include "Parser.h"
+#include "Constructs.h"
 
 class Class :
 	public Block
@@ -7,7 +8,7 @@ class Class :
 private:
 	std::string name;
 
-	//Class(const Class& rhs):Block(NULL){}
+	Class(const Class& rhs):Block(NULL){}
 	void operator=(const Class& rhs){}
 
 public:
@@ -24,5 +25,5 @@ private:
 
 public:
 	virtual bool ShouldParse(const std::string& line);
-	virtual Block* Parse(const Block& parent, Tokenizer& tokenizer);
+	virtual Block* Parse(Block& parent, Tokenizer& tokenizer);
 };

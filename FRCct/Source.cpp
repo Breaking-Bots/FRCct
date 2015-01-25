@@ -2,8 +2,10 @@
 #include <fstream>
 #include <string>
 #include "Lexer.h"
+#include "Constructs.h"
 
 int main(int argc, char** argv){
+	InitConstructs();
 	if (argc >= 2){
 		Lexer lexer;
 		int lineCount = 0;

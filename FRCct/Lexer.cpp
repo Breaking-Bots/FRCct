@@ -31,8 +31,10 @@ std::vector<std::string> Lexer::Tokenize(const std::string& filestr, int& tokenC
 
 	while (tokenizer.HasNextToken()){
 		tokenizer.NextToken(token);
-		tokens.push_back(token.token);
-		tokenCounter++;
+		if (token.type != TokenType::EMPTY){
+			tokens.push_back(token.token);
+			tokenCounter++;
+		}
 	}
 	
 	return tokens;//std::move(tokens);
@@ -59,8 +61,12 @@ Tokenizer::Tokenizer(const std::string& str) :str(str){
 	try{
 		tokenDatas.push_back(TokenData(std::regex("^(#.*)"),
 			TokenType::PREPROCESSOR));
-		tokenDatas.push_back(TokenData(std::regex("^([a-zA-Z][a-zA-Z0-9]*)"),
+		tokenDatas.push_back(TokenData(std::regex("^(" + constants::IDENTIFIER + ")"),
 			TokenType::IDENTIFIER));
+		tokenDatas.push_back(TokenData(std::regex("^((-)?[0-9]+\\.[0-9]*f)"),
+			TokenType::FLOAT_LITERAL));
+		tokenDatas.push_back(TokenData(std::regex("^((-)?[0-9]+\\.[0-9]*)"),
+			TokenType::DOUBLE_LITERAL));
 		tokenDatas.push_back(TokenData(std::regex("^((-)?[0-9]+)"),
 			TokenType::INTEGER_LITERAL));
 		tokenDatas.push_back(TokenData(std::regex("^(\'.\')"),
@@ -74,7 +80,7 @@ Tokenizer::Tokenizer(const std::string& str) :str(str){
 	}
 	catch(std::regex_error& e){
 		//e.what
-		std::cerr << "regex error\n" << e.code() << std::endl;
+		std::cerr << "regex error\n" << e.what() << std::endl;
 		exit(1);
 	}
 }

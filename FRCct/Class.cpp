@@ -15,11 +15,11 @@ Class::~Class()
 }
 
 bool ClassParser::ShouldParse(const std::string& line){
-	return std::regex_match(line, std::regex("class [a-zA-Z][a-zA-Z0-9]*\\s*\\{"));
+	return std::regex_match(line, std::regex("class" + constants::SPACE + constants::IDENTIFIER + constants::SPACE + "\\{"));
 }
 
 //TODO: make this a safe pointer
-Block* ClassParser::Parse(const Block& parent, Tokenizer& tokenizer){
+Block* ClassParser::Parse(Block& parent, Tokenizer& tokenizer){
 	Token nameToken;
 	tokenizer.NextToken(nameToken);
 	tokenizer.NextToken(nameToken);

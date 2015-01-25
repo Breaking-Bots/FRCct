@@ -1,21 +1,25 @@
 #pragma once
-#include<vector>
-#include<string>
-#include<iostream>
-#include<regex>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <regex>
 #include "Lexer.h"
+#include "Var.h"
 
 class Block{
 private:
-	Block* parent;
+	const Block* parent;
 	std::vector<Block*> children;
+	std::vector<Var> vars;
 
 	Block(const Block& rhs){}
 	void operator=(const Block& rhs){}
 public:
-	Block(Block* parent);
-	inline Block* GetParent(){ return parent; }
+	Block(const Block* parent);
+	inline const Block* GetParent(){ return parent; }
 	inline void AddBlock(Block* child){ children.push_back(child); }
+	inline void AddVar(Var& var){ vars.push_back(var); }
+	Var* GetVar(std::string name);
 	virtual void Run() = 0;
 	virtual ~Block();
 };
@@ -31,7 +35,7 @@ private:
 public:
 	
 	virtual bool ShouldParse(const std::string& line) = 0;
-	virtual Block* Parse(const Block& parent, Tokenizer& tokenizer) = 0;
+	virtual Block* Parse(Block& parent, Tokenizer& tokenizer) = 0;
 
 	virtual ~Parser();
 };

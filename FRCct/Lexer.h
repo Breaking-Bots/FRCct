@@ -10,6 +10,7 @@
 #include <cctype>
 #include <locale>
 #include "Util.h"
+#include "Constructs.h"
 
 // trim from start
 static inline std::string &ltrim(std::string &s) {
@@ -33,7 +34,8 @@ enum TokenType{
 	PREPROCESSOR, // #ENTRY_TYPE
 	IDENTIFIER, //first character is a letter, but following may not be
 	INTEGER_LITERAL, // a number
-	FLOATING_POINT_LITERAL, // a floating point number
+	FLOAT_LITERAL, // a floating point number
+	DOUBLE_LITERAL, // a double precision floating point number
 	CHAR_LITERAL, //enclosed in single quotes
 	STRING_LITERAL, //enclosed in double quotes
 	EMPTY //empty
