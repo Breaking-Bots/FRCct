@@ -37,7 +37,8 @@ enum TokenType{
 	FLOAT_LITERAL, // a floating point number
 	DOUBLE_LITERAL, // a double precision floating point number
 	CHAR_LITERAL, //enclosed in single quotes
-	STRING_LITERAL, //enclosed in double quotes
+	STRING_LITERAL, //enclosed in double quotes 
+	SL_COMMENT, // <- eg
 	EMPTY //empty
 
 };

@@ -1,5 +1,6 @@
-#ENTRY_TYPE(BASIC)
+#entry(basic)
 
+//main method
 void main(){
-	cout("Hello, World");
+	println("Hello, World"); //prints Hello, World
 }

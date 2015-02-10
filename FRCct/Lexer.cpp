@@ -59,6 +59,8 @@ Tokenizer::Tokenizer(const std::string& str) :str(str){
 
 
 	try{
+		tokenDatas.push_back(TokenData(std::regex("(//.*)"),
+			TokenType::SL_COMMENT));
 		tokenDatas.push_back(TokenData(std::regex("^(#.*)"),
 			TokenType::PREPROCESSOR));
 		tokenDatas.push_back(TokenData(std::regex("^(" + constants::IDENTIFIER + ")"),
@@ -108,8 +110,10 @@ void Tokenizer::NextToken(Token& out_token){
 			std::string token = trim(matcher[0].str());
 			str = std::regex_replace(str, data.regex, 
 				"", std::regex_constants::format_first_only);
-
-			if (data.type == TokenType::STRING_LITERAL){
+			if (data.type == TokenType::SL_COMMENT){
+				out_token = Token("", TokenType::EMPTY);
+			}
+			else if (data.type == TokenType::STRING_LITERAL){
 				out_token =
 					Token(token.substr(1, token.length() - 2)
 					, TokenType::STRING_LITERAL);

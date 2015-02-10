@@ -10,7 +10,7 @@ int main(int argc, char** argv){
 		Lexer lexer;
 		int lineCount = 0;
 		int tokenCount = 0;
-		std::vector<std::string> file = lexer.ReadFile(argv[argc - 1], lineCount);
+		std::vector<std::string> file = lexer.ReadFile(argv[1], lineCount);
 		std::string filestr = VectorToString(file);
 
 

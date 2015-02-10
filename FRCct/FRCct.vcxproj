@@ -66,24 +66,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Class.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Compiler.cpp" />
     <ClCompile Include="Constructs.cpp" />
-    <ClCompile Include="Function.cpp" />
     <ClCompile Include="Lexer.cpp" />
+    <ClCompile Include="Parseable.cpp" />
     <ClCompile Include="Parser.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="Var.cpp" />
-    <ClCompile Include="VarParser.cpp" />
+    <ClCompile Include="Statement.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Class.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="Compiler.h" />
     <ClInclude Include="Constructs.h" />
-    <ClInclude Include="Function.h" />
     <ClInclude Include="Lexer.h" />
+    <ClInclude Include="Parseable.h" />
     <ClInclude Include="Parser.h" />
+    <ClInclude Include="Statement.h" />
     <ClInclude Include="Util.h" />
-    <ClInclude Include="Var.h" />
-    <ClInclude Include="VarParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
