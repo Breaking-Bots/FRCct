@@ -1,6 +1,7 @@
 #entry(basic)
 
 //main method
-void main(){
-	println("Hello, World"); //prints Hello, World
+int main(){
+	//println("Hello, World"); //prints Hello, World
+	return 0;
 }

@@ -12,10 +12,8 @@ public:
 	}
 
 	const Block* m_superBlock;
-	std::vector<Parseable> m_children;
-	bool m_parsed;
-	bool m_hasExternalSymbols;
-
+	std::vector<IParseable> m_children;
+	
 	Parseable Parse() sealed;
 
 	explicit Block(const Block* superBlock);

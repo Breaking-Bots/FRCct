@@ -2,17 +2,20 @@
 
 
 Block::Block():
-IParseable(), m_superBlock(NULL), m_parsed(false), m_hasExternalSymbols(false)
+m_superBlock(NULL)
 {
 }
 
 Block::Block(const Block* superBlock):
-m_superBlock(superBlock), m_parsed(false), m_hasExternalSymbols(false)
+m_superBlock(superBlock)
 {
 
 }
 
 Parseable Block::Parse(){
+	for (IParseable& p : m_children){
+		p.Parse();
+	}
 	return Parseable(this, ParseableType::BLOCK);
 }
 

@@ -112,16 +112,6 @@ void Tokenizer::NextToken(Token& out_token){
 				"", std::regex_constants::format_first_only);
 			if (data.type == TokenType::SL_COMMENT){
 				out_token = Token("", TokenType::EMPTY);
-			}
-			else if (data.type == TokenType::STRING_LITERAL){
-				out_token =
-					Token(token.substr(1, token.length() - 2)
-					, TokenType::STRING_LITERAL);
-			}
-			else if(data.type == TokenType::CHAR_LITERAL){
-				out_token =
-					Token(token.substr(1, token.length() - 2)
-					, TokenType::CHAR_LITERAL);
 			}else{
 				out_token = Token(token, data.type);
 			}
