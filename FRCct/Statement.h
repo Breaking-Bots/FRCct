@@ -10,6 +10,7 @@ static const unsigned char ST_FLAG_EXPRESSION = 0x08;
 
 struct StatementBitSet{
 	unsigned char flags;
+	StatementBitSet(unsigned char flags) :flags(flags){}
 };
 
 struct StatementData{
@@ -30,7 +31,18 @@ struct Statement: public IParseable
 	static std::vector<StatementData> statementDatas;
 
 	static void InitFlags(){
-		statementDatas.push_back(StatementData(std::regex(constants::DECLARATION), StatementBitSet()));
+		statementDatas.push_back(StatementData(
+			std::regex("^(" + constants::DECLARATION + constants::SPACE + "\\;)"),
+			StatementBitSet(ST_FLAG_DECLARATION)));
+		statementDatas.push_back(StatementData(
+			std::regex("\\="),
+			StatementBitSet(ST_FLAG_ASSIGNMENT)));
+		statementDatas.push_back(StatementData(
+			std::regex(constants::IDENTIFIER + constants::SPACE + "\\(.*\\)"),
+			StatementBitSet(ST_FLAG_FUNCTION_CALL)));
+		statementDatas.push_back(StatementData(
+			std::regex(""), //TODO: allow arithmetic
+			StatementBitSet(ST_FLAG_EXPRESSION)));
 	}
 
 	Block* m_root;

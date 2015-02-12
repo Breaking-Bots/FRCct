@@ -49,13 +49,27 @@ Tokenizer::Tokenizer(const std::string& str) :str(str){
 	pLastToken = new Token("", TokenType::EMPTY); // TODO: delate
 
 	tokenList.push_back("^(\\;)");
+	tokenList.push_back("^(\\+)");
+	tokenList.push_back("^(\\-)");
+	tokenList.push_back("^(\\*)");
+	tokenList.push_back("^(\\/)");
+	tokenList.push_back("^(\\%)");
+	tokenList.push_back("^(\\^)");
+	tokenList.push_back("^(\\|)");
+	tokenList.push_back("^(\\&)");
+	tokenList.push_back("^(\\~)");
 	tokenList.push_back("^(\\=)");
+	tokenList.push_back("^(\\<)");
+	tokenList.push_back("^(\\>)");
+	tokenList.push_back("^(\\!)");
 	tokenList.push_back("^(\\()");
 	tokenList.push_back("^(\\))");
 	tokenList.push_back("^(\\.)");
 	tokenList.push_back("^(\\,)");
 	tokenList.push_back("^(\\{)");
 	tokenList.push_back("^(\\})");
+	tokenList.push_back("^(\\[)");
+	tokenList.push_back("^(\\])");
 
 
 	try{
