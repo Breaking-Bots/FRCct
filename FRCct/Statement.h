@@ -41,7 +41,7 @@ struct Statement: public IParseable
 			std::regex(constants::IDENTIFIER + constants::SPACE + "\\(.*\\)"),
 			StatementBitSet(ST_FLAG_FUNCTION_CALL)));
 		statementDatas.push_back(StatementData(
-			std::regex(""), //TODO: allow arithmetic
+			std::regex("([\\+\\-\\*\\/\\%\\^\\|\\&\\~\\<\\>\\!])"), //TODO: allow arithmetic
 			StatementBitSet(ST_FLAG_EXPRESSION)));
 	}
 
